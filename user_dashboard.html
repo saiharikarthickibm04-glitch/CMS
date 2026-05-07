@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}User Dashboard - ACMS{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="welcome-banner">
+        <h2>Welcome back, <span class="gradient-text">{{ name }}</span>!</h2>
+        <p>User ID: {{ user_id }} | Email: {{ email }}</p>
+    </div>
+
+    <div class="complaint-section">
+        <div class="glass-card">
+            <h3><i class="fas fa-edit"></i> Submit a New Complaint</h3>
+            <form action="{{ url_for('submit_complaint') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Problem Type</label>
+                        <select name="problem_type" required>
+                            <option value="" disabled selected>Select Problem Type</option>
+                            <option value="Water Problem">Water Problem</option>
+                            <option value="Electricity Problem">Electricity Problem</option>
+                            <option value="Hostel Problem">Hostel Problem</option>
+                            <option value="Internet Problem">Internet Problem</option>
+                            <option value="Classroom Problem">Classroom Problem</option>
+                            <option value="Transport Problem">Transport Problem</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Complaint Title</label>
+                        <input type="text" name="complaint_title" placeholder="Brief title" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Detailed Description</label>
+                    <textarea name="complaint_description" rows="5" placeholder="Explain your problem in detail..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Upload Screenshot (Optional)</label>
+                    <div class="file-upload">
+                        <input type="file" name="attachment" accept=".png, .jpg, .jpeg">
+                        <p class="file-hint">Allowed: PNG, JPG, JPEG</p>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-submit">Submit Complaint</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

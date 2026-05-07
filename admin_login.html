@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Admin Login - ACMS{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="glass-form login-form admin-accent">
+        <div class="form-header">
+            <i class="fas fa-user-shield"></i>
+            <h2>Admin Login</h2>
+        </div>
+        <form action="{{ url_for('admin_login') }}" method="POST">
+            <div class="form-group">
+                <label>Admin ID</label>
+                <input type="text" name="admin_id" placeholder="Enter Admin ID" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="btn btn-submit">Admin Access</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
